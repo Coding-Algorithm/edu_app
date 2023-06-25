@@ -20,6 +20,7 @@ export const appColors = {
   divider: 'rgba(241, 243, 246, 1)',
   text: 'rgba(138, 144, 162, 1)',
   primaryText: 'rgba(138, 144, 162, 1)',
+  black: 'rgba(41, 41, 48, 1)',
 };
 
 export const appFontSize = {
@@ -43,7 +44,14 @@ export const appBorder = {
   sm: moderateScale(2),
 };
 
+export const appBorderRadius = {
+  xsm: moderateScale(5),
+  sm: moderateScale(8),
+  md: moderateScale(16),
+};
+
 const paddingBase = 5;
+const marginBase = 6;
 
 export const appPadding = {
   xsm: moderateScale(paddingBase),
@@ -52,4 +60,13 @@ export const appPadding = {
   lg: moderateScale(paddingBase * 6),
   xl: moderateScale(paddingBase * 8),
   xxl: moderateScale(paddingBase * 10),
+};
+
+export const appMargin = {
+  xsm: moderateScale(marginBase),
+  sm: moderateScale(marginBase * 2),
+  md: moderateScale(marginBase * 4),
+  lg: moderateScale(marginBase * 6),
+  xl: moderateScale(marginBase * 8),
+  xxl: moderateScale(marginBase * 10),
 };

@@ -1,26 +1,62 @@
-import {StyleSheet, TextInput, Text, View} from 'react-native';
+import {Image, StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
-import {BodySmallLabel} from '../Labels/Labels';
-import {appBorder, appPadding} from '../../../utils/styleGuide';
+import {appBorder, appBorderRadius, appColors, appPadding} from '../../../utils/styleGuide';
+import {appImages} from '../../../assets/images';
 
-const OneLineInput = () => {
+interface OneLineInputProps {
+  placeholder?: string;
+  text?: string | number | any;
+  propsStyle?: object;
+  setText: (e: string | number) => any;
+  isTrue: {
+    showRightIcon: boolean;
+  };
+  rightIcon: JSX.Element;
+  // isReDefine?: {
+  //   onChangeText?: true;
+  // };
+  // reDefine?: {
+  //   onChangeText?: () => void;
+  // };
+}
+
+export const OneLineInput = ({
+  placeholder,
+  text,
+  setText,
+  propsStyle,
+  isTrue,
+  rightIcon,
+}: // isReDefine,
+// reDefine,
+// setText,
+OneLineInputProps) => {
   return (
     <View style={styles.container}>
-      <BodySmallLabel>Password</BodySmallLabel>
-      <TextInput></TextInput>
+      <TextInput
+        style={[styles.textInput, propsStyle]}
+        onChangeText={e => setText(e)}
+        placeholder={placeholder}
+        value={text}
+      />
 
-      {/* error display */}
-      <Text></Text>
+      {isTrue?.showRightIcon ? rightIcon : null}
     </View>
   );
 };
 
-export default OneLineInput;
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    padding: appPadding.sm,
-    borderRadius: appBorder.xsm,
+    paddingHorizontal: appPadding.xsm,
+    borderColor: appColors.secondary,
+    borderWidth: appBorder.sm,
+    borderRadius: appBorderRadius.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textInput: {
+    width: '80%',
   },
 });
