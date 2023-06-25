@@ -23,16 +23,33 @@ export const appColors = {
 };
 
 export const appFontSize = {
-  sm: moderateScale(12),
-  base: moderateScale(14),
-  md: moderateScale(16),
-  lg: moderateScale(18),
-  xl: moderateScale(20),
-  xxl: moderateScale(24),
-  xxxl: moderateScale(28),
+  bodySmallest: moderateScale(12),
+  bodySmall: moderateScale(14),
+  bodyMain: moderateScale(16),
+  bodyBig: moderateScale(18),
+  h4: moderateScale(18),
+  h3: moderateScale(20),
+  h2: moderateScale(24),
+  h1: moderateScale(28),
 };
 
 export const appFontWeight = {
   // bold:
   // regular:
+};
+
+export const appBorder = {
+  xsm: moderateScale(1),
+  sm: moderateScale(2),
+};
+
+const paddingBase = 5;
+
+export const appPadding = {
+  xsm: moderateScale(paddingBase),
+  sm: moderateScale(paddingBase * 2),
+  md: moderateScale(paddingBase * 4),
+  lg: moderateScale(paddingBase * 6),
+  xl: moderateScale(paddingBase * 8),
+  xxl: moderateScale(paddingBase * 10),
 };
