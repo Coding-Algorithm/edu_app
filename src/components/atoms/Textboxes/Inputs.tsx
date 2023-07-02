@@ -1,7 +1,11 @@
-import {Image, StyleSheet, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
-import {appBorder, appBorderRadius, appColors, appPadding} from '../../../utils/styleGuide';
-import {appImages} from '../../../assets/images';
+import {
+  appBorder,
+  appBorderRadius,
+  appColors,
+  appPadding,
+} from '../../../utils/styleGuide';
 
 interface OneLineInputProps {
   placeholder?: string;

@@ -1,15 +1,8 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {Dispatch, SetStateAction} from 'react';
-import {
-  appBorder,
-  appColors,
-  appFontSize,
-  appMargin,
-  appPadding,
-} from '../../../utils/styleGuide';
+import {appColors, appFontSize, appMargin} from '../../../utils/styleGuide';
 import {BodySmallLabel} from '../../atoms/Labels/Labels';
 import {OneLineInput} from '../../atoms/Textboxes/Inputs';
-import {appImages} from '../../../assets/images';
 
 interface FormInputPropType {
   text: string | number;
@@ -53,7 +46,6 @@ const FormInput = ({
         />
       </View>
 
-      {/* error display */}
       <Text style={styles.errorText}>{errorText}</Text>
     </View>
   );
