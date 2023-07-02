@@ -1,6 +1,6 @@
-import {Text} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import React from 'react';
-import {appFontSize} from '../../../utils/styleGuide';
+import {appColors, appFontSize, appFontWeight} from '../../../utils/styleGuide';
 import type {PropsWithChildren} from 'react';
 
 interface LabelProps {
@@ -9,13 +9,25 @@ interface LabelProps {
   propsStyle?: object;
 }
 
+export const LabelHOC = ({
+  LabelComp,
+  type,
+}: {
+  LabelComp: JSX.Element;
+  type: string;
+}) => {
+  const style = styles[`${type}`];
+
+  return <LabelComp />;
+};
+
 export const HeaderOneLabel = ({
   propsStyle,
   text,
   children,
 }: PropsWithChildren<LabelProps>) => {
   return (
-    <Text style={[{fontSize: appFontSize.h1}, propsStyle]}>
+    <Text style={[styles.headerOneLabelText, propsStyle]}>
       {children ? children : text}
     </Text>
   );
@@ -32,3 +44,11 @@ export const BodySmallLabel = ({
     </Text>
   );
 };
+
+const styles = StyleSheet.create({
+  headerOneLabelText: {
+    fontSize: appFontSize.h1,
+    color: appColors.black,
+    fontWeight: `${appFontWeight.bolder}`,
+  },
+});

@@ -10,6 +10,7 @@ import {
   TextButton,
   IconButton,
 } from '../components/atoms/Buttons/Buttons';
+import {HeaderOneLabel} from '../components/atoms/Labels/Labels';
 
 const ScreenIndex = () => {
   const [text, setText] = useState<string | number>('');
@@ -27,7 +28,8 @@ const ScreenIndex = () => {
 
   return (
     <WrapperLayout>
-      {/* <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}> */}
+      <HeaderOneLabel text="Welcome back" />
+
       <FormInput
         label="Email Address"
         text={text}
@@ -38,20 +40,6 @@ const ScreenIndex = () => {
         }}
       />
 
-      <FormInput
-        label="Password"
-        text={text}
-        setText={setText}
-        isTrue={{showRightIcon: true}}
-        placeholder="********"
-        isPassword={true}
-        elementStore={{
-          rightIcon: {
-            icon: passwordIcon,
-            action: () => console.log('null'),
-          },
-        }}
-      />
       <FullWidthButton onPress={() => console.log('button pressed')} />
 
       <IconButton
@@ -64,7 +52,6 @@ const ScreenIndex = () => {
               style={{
                 width: 20,
                 height: 20,
-                // paddingBottom: 10,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
