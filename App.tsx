@@ -9,6 +9,8 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import ScreenIndex from './src/screens/ScreenIndex';
 
+
+
 function App(): JSX.Element {
   return (
     <>

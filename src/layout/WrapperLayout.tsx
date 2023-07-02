@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {PropsWithChildren} from 'react';
 import {appPadding} from '../utils/styleGuide';
 

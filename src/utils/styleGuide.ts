@@ -21,6 +21,7 @@ export const appColors = {
   text: 'rgba(138, 144, 162, 1)',
   primaryText: 'rgba(138, 144, 162, 1)',
   black: 'rgba(41, 41, 48, 1)',
+  border: 'rgba(216, 218, 220, 1)',
 };
 
 export const appFontSize = {
@@ -35,13 +36,25 @@ export const appFontSize = {
 };
 
 export const appFontWeight = {
-  // bold:
-  // regular:
+  bolder: '700',
+};
+
+export const appFonts = {
+  bold: 'DMSans-Bold',
+  boldItalic: 'DMSans-BoldItalic',
+  italic: 'DMSans-Italic',
+  medium: 'DMSans-Medium',
+  mediumItalic: 'DMSans-MediumItalic',
+  regular: 'DMSans-Regular',
 };
 
 export const appBorder = {
   xsm: moderateScale(1),
   sm: moderateScale(2),
+  md: moderateScale(4),
+  lg: moderateScale(6),
+  xl: moderateScale(8),
+  xxl: moderateScale(10),
 };
 
 export const appBorderRadius = {
@@ -56,6 +69,7 @@ const marginBase = 6;
 export const appPadding = {
   xsm: moderateScale(paddingBase),
   sm: moderateScale(paddingBase * 2),
+  ssm: moderateScale(paddingBase * 2.9),
   md: moderateScale(paddingBase * 4),
   lg: moderateScale(paddingBase * 6),
   xl: moderateScale(paddingBase * 8),

@@ -1,28 +1,13 @@
-import {StyleSheet, TextInput, View} from 'react-native';
-import React from 'react';
+/* eslint-disable react/no-unstable-nested-components */
+import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
 import {
   appBorder,
   appBorderRadius,
   appColors,
   appPadding,
 } from '../../../utils/styleGuide';
-
-interface OneLineInputProps {
-  placeholder?: string;
-  text?: string | number | any;
-  propsStyle?: object;
-  setText: (e: string | number) => any;
-  isTrue: {
-    showRightIcon: boolean;
-  };
-  rightIcon: JSX.Element;
-  // isReDefine?: {
-  //   onChangeText?: true;
-  // };
-  // reDefine?: {
-  //   onChangeText?: () => void;
-  // };
-}
+import {InputPropsTypes} from '../../../types/components/InputsTypes';
 
 export const OneLineInput = ({
   placeholder,
@@ -31,20 +16,41 @@ export const OneLineInput = ({
   propsStyle,
   isTrue,
   rightIcon,
-}: // isReDefine,
-// reDefine,
-// setText,
-OneLineInputProps) => {
+  leftIcon,
+  isPassword = false,
+}: InputPropsTypes) => {
+  const [hidePassword, setHidePassword] = useState(false);
+
+  const IconButton = ({
+    iconElement,
+  }: {
+    iconElement?: {icon: JSX.Element; action: () => void};
+  }) => {
+    const onPressHandler = () => {
+      isPassword ? setHidePassword(prev => !prev) : iconElement?.action();
+    };
+
+    console.log(isPassword);
+
+    return (
+      <TouchableOpacity onPress={onPressHandler}>
+        {iconElement?.icon}
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.container}>
+      {isTrue?.showLeftIcon ? <IconButton iconElement={leftIcon} /> : null}
+
       <TextInput
         style={[styles.textInput, propsStyle]}
         onChangeText={e => setText(e)}
         placeholder={placeholder}
-        value={text}
+        value={isPassword && hidePassword ? '*********' : text}
       />
 
-      {isTrue?.showRightIcon ? rightIcon : null}
+      {isTrue?.showRightIcon ? <IconButton iconElement={rightIcon} /> : null}
     </View>
   );
 };
