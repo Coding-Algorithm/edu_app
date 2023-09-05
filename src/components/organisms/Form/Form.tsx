@@ -1,7 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ViewStyle} from 'react-native';
 import React, {Dispatch, SetStateAction} from 'react';
 import {appColors, appFontSize, appMargin} from '../../../utils/styleGuide';
-import {BodySmallLabel} from '../../atoms/Labels/Labels';
+import {BodyLabel} from '../../atoms/Labels/Labels';
 import {OneLineInput} from '../../atoms/Textboxes/Inputs';
 import {InputPropsTypes} from '../../../types/components/InputsTypes';
 
@@ -9,14 +9,17 @@ interface FormInputPropType {
   errorText?: string;
   containerStyle?: object;
   // setText: Dispatch<SetStateAction<string | number>>;
+  keyboardType: string;
   elementStore?: {
     rightIcon: {
       icon: JSX.Element;
       action: () => void;
+      iconStyle: ViewStyle;
     };
     leftIcon?: {
       icon: JSX.Element;
       action: () => void;
+      iconStyle: ViewStyle;
     };
   };
   label: string;
@@ -29,6 +32,7 @@ const FormInput = ({
   setText,
   containerStyle,
   isTrue,
+  keyboardType,
   elementStore,
   label,
   placeholder,
@@ -36,10 +40,10 @@ const FormInput = ({
 }: FormInputPropType & InputPropsTypes) => {
   return (
     <View style={[styles.container, containerStyle]}>
-      <BodySmallLabel
+      <BodyLabel
         propsStyle={{color: appColors.black, marginBottom: appMargin.xsm}}>
         {label}
-      </BodySmallLabel>
+      </BodyLabel>
 
       <View>
         <OneLineInput

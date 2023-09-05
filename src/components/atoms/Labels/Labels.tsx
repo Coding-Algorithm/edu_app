@@ -1,12 +1,12 @@
 import {StyleSheet, Text} from 'react-native';
 import React from 'react';
-import {appColors, appFontSize, appFontWeight} from '../../../utils/styleGuide';
+import {appColors, appFontSize} from '../../../utils/styleGuide';
 import type {PropsWithChildren} from 'react';
 
 interface LabelProps {
   // children?: React.ReactNode;
   text?: string;
-  propsStyle?: object;
+  propStyle?: object;
 }
 
 export const LabelHOC = ({
@@ -16,39 +16,52 @@ export const LabelHOC = ({
   LabelComp: JSX.Element;
   type: string;
 }) => {
-  const style = styles[`${type}`];
+  const style = styles[`${type}` as keyof typeof styles];
 
   return <LabelComp />;
 };
 
 export const HeaderOneLabel = ({
-  propsStyle,
+  propStyle,
   text,
   children,
 }: PropsWithChildren<LabelProps>) => {
   return (
-    <Text style={[styles.headerOneLabelText, propsStyle]}>
+    <Text style={[styles.headerLabelText, propStyle]}>
       {children ? children : text}
     </Text>
   );
 };
 
-export const BodySmallLabel = ({
-  propsStyle,
+export const HeaderFourLabel = ({
+  propStyle,
   text,
   children,
 }: PropsWithChildren<LabelProps>) => {
   return (
-    <Text style={[propsStyle, {fontSize: appFontSize.bodySmall}]}>
+    <Text
+      style={[styles.headerLabelText, propStyle, {fontSize: appFontSize.h4}]}>
+      {children ? children : text}
+    </Text>
+  );
+};
+
+export const BodyLabel = ({
+  propStyle,
+  text,
+  children,
+}: PropsWithChildren<LabelProps>) => {
+  return (
+    <Text style={[{fontSize: appFontSize.bodySmall}, propStyle]}>
       {children ? children : text}
     </Text>
   );
 };
 
 const styles = StyleSheet.create({
-  headerOneLabelText: {
+  headerLabelText: {
     fontSize: appFontSize.h1,
     color: appColors.black,
-    fontWeight: `${appFontWeight.bolder}`,
+    fontWeight: '700',
   },
 });

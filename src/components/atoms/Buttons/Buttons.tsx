@@ -6,14 +6,19 @@ import {
   appBorderRadius,
   appColors,
   appFontSize,
-  appFontWeight,
   appPadding,
 } from '../../../utils/styleGuide';
 
-export const FullWidthButton = ({onPress}: ButtonPropsTypes) => {
+export const FullWidthButton = ({
+  onPress,
+  buttonText = 'Sign in',
+  wrapperStyle,
+}: ButtonPropsTypes) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.fullWidthButtonContainer}>
-      <Text style={styles.fullWidthButtonText}>Sign In</Text>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.fullWidthButtonContainer, wrapperStyle]}>
+      <Text style={styles.fullWidthButtonText}>{buttonText}</Text>
     </TouchableOpacity>
   );
 };
@@ -23,7 +28,7 @@ export const IconButton = ({onPress, wrapperStyle, icon}: ButtonPropsTypes) => {
     <TouchableOpacity
       onPress={onPress}
       style={[styles.IconButton, wrapperStyle]}>
-      <Text style={styles.IconText}>{icon}</Text>
+      {icon}
     </TouchableOpacity>
   );
 };
@@ -67,6 +72,6 @@ const styles = StyleSheet.create({
   textButtonText: {
     color: appColors.primary,
     fontSize: appFontSize.h4,
-    fontWeight: `${appFontWeight.bolder}`,
+    fontWeight: '700',
   },
 });

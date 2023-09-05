@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import {
   appBorder,
@@ -17,9 +23,10 @@ export const OneLineInput = ({
   isTrue,
   rightIcon,
   leftIcon,
+  keyboardType = 'default',
   isPassword = false,
 }: InputPropsTypes) => {
-  const [hidePassword, setHidePassword] = useState(false);
+  const [hidePassword, setHidePassword] = useState(true);
 
   const IconButton = ({
     iconElement,
@@ -30,7 +37,7 @@ export const OneLineInput = ({
       isPassword ? setHidePassword(prev => !prev) : iconElement?.action();
     };
 
-    console.log(isPassword);
+    console.log('isPassword', isPassword);
 
     return (
       <TouchableOpacity onPress={onPressHandler}>
@@ -47,10 +54,19 @@ export const OneLineInput = ({
         style={[styles.textInput, propsStyle]}
         onChangeText={e => setText(e)}
         placeholder={placeholder}
-        value={isPassword && hidePassword ? '*********' : text}
+        keyboardType={keyboardType}
+        value={text}
+        secureTextEntry={isPassword && hidePassword}
       />
 
-      {isTrue?.showRightIcon ? <IconButton iconElement={rightIcon} /> : null}
+      {isTrue?.showRightIcon ? (
+        <TouchableOpacity
+          onPress={() => {
+            isPassword ? setHidePassword(prev => !prev) : rightIcon?.action();
+          }}>
+          <Image style={rightIcon.iconStyle} source={rightIcon?.icon!} />
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 };
@@ -58,7 +74,7 @@ export const OneLineInput = ({
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingHorizontal: appPadding.xsm,
+    paddingHorizontal: appPadding.sm,
     borderColor: appColors.secondary,
     borderWidth: appBorder.sm,
     borderRadius: appBorderRadius.sm,

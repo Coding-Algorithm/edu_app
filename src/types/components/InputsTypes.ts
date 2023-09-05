@@ -1,3 +1,5 @@
+import {ViewStyle} from 'react-native';
+
 export type InputPropsTypes = {
   placeholder?: string;
   text?: string | number | any;
@@ -7,8 +9,9 @@ export type InputPropsTypes = {
     showRightIcon?: boolean;
     showLeftIcon?: boolean;
   };
-  rightIcon?: {icon: JSX.Element; action: () => void};
-  leftIcon?: {icon: JSX.Element; action: () => void};
+  keyboardType: string;
+  rightIcon?: {icon: JSX.Element; action: () => void; iconStyle: ViewStyle};
+  leftIcon?: {icon: JSX.Element; action: () => void; iconStyle: ViewStyle};
   isPassword?: boolean;
 };
 

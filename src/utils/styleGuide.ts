@@ -1,3 +1,4 @@
+import {TextStyleAndroid} from 'react-native';
 import {moderateScale} from './scale';
 
 export const appColors = {
@@ -35,9 +36,6 @@ export const appFontSize = {
   h1: moderateScale(28),
 };
 
-export const appFontWeight = {
-  bolder: '700',
-};
 
 export const appFonts = {
   bold: 'DMSans-Bold',
@@ -74,6 +72,10 @@ export const appPadding = {
   lg: moderateScale(paddingBase * 6),
   xl: moderateScale(paddingBase * 8),
   xxl: moderateScale(paddingBase * 10),
+  '3xl': moderateScale(paddingBase * 20),
+  '4xl': moderateScale(paddingBase * 25),
+  '5xl': moderateScale(paddingBase * 30),
+  '6xl': moderateScale(paddingBase * 40),
 };
 
 export const appMargin = {
@@ -83,4 +85,7 @@ export const appMargin = {
   lg: moderateScale(marginBase * 6),
   xl: moderateScale(marginBase * 8),
   xxl: moderateScale(marginBase * 10),
+  '3xl': moderateScale(marginBase * 20),
+  '4xl': moderateScale(marginBase * 30),
+  '5xl': moderateScale(marginBase * 40),
 };
