@@ -22,18 +22,19 @@ import {
 } from '../../components/atoms/Buttons/Buttons';
 import {useNavigation} from '@react-navigation/native';
 
-const Login = () => {
+const SignUp = () => {
+  const navigation: any = useNavigation();
+
   const [userInfo, setUserInfo] = useState<{
     email: string | null;
     password: string | null;
-  }>({email: null, password: null});
+    fullName: string | null;
+  }>({email: null, password: null, fullName: null});
 
   const [errors, setErrors] = useState<{
     email: string[];
     password: string[];
   }>({email: [], password: []});
-
-  const navigation: any = useNavigation();
 
   const handleOnChangeText = (newValue: string | number, tag: string) => {
     setUserInfo(prev => {
@@ -50,7 +51,7 @@ const Login = () => {
         showsVerticalScrollIndicator={false}
         style={styles.container}>
         <HeaderOneLabel propStyle={{marginBottom: appMargin.sm}}>
-          Welcome back
+          Create an Account
         </HeaderOneLabel>
 
         <HeaderFourLabel
@@ -59,12 +60,21 @@ const Login = () => {
             fontWeight: '400',
             marginBottom: appMargin.lg,
           }}>
-          Welcome back. Enter your credentials to access your account
+          We are happy to welcome you to this platform
         </HeaderFourLabel>
 
         <FormInput
+          label="Full Name"
+          keyboardType="default"
+          text={userInfo.fullName}
+          placeholder="Full Name"
+          setText={e => handleOnChangeText(e, 'fullName')}
+          containerStyle={{marginBottom: appMargin.sm}}
+        />
+
+        <FormInput
           label="Email Address"
-          keyboardType="email-address"
+          keyboardType="default"
           text={userInfo.email}
           placeholder="hello@example.c"
           setText={e => handleOnChangeText(e, 'email')}
@@ -88,20 +98,12 @@ const Login = () => {
           }}
           setText={e => handleOnChangeText(e, 'password')}
           isPassword={true}
-        />
-
-        <TextButton
-          onPress={() => navigation.navigate('forgotPassword')}
-          buttonText="Forgot Password?"
-          wrapperStyle={{
-            marginTop: appMargin.md,
-            marginBottom: appMargin.lg,
-            alignItems: 'flex-end',
-          }}
+          containerStyle={{marginBottom: appMargin.md}}
         />
 
         <FullWidthButton
           onPress={() => console.log('Sign in')}
+          buttonText="Create an Account"
           wrapperStyle={{
             marginBottom: appMargin.md,
           }}
@@ -122,7 +124,7 @@ const Login = () => {
             }}
           />
           <BodyLabel
-            text="or login with"
+            text="or SignUp with"
             propStyle={{
               color: appColors.black,
             }}
@@ -136,9 +138,9 @@ const Login = () => {
           />
         </View>
 
-        <View style={styles.altLogin}>
+        <View style={styles.altSignUp}>
           <IconButton
-            onPress={() => console.log('login with google..')}
+            onPress={() => console.log('SignUp with google..')}
             wrapperStyle={{width: '30%'}}
             icon={
               <Image
@@ -153,7 +155,7 @@ const Login = () => {
           />
 
           <IconButton
-            onPress={() => console.log('login with google..')}
+            onPress={() => console.log('SignUp with google..')}
             wrapperStyle={{width: '30%'}}
             icon={
               <Image
@@ -168,7 +170,7 @@ const Login = () => {
           />
 
           <IconButton
-            onPress={() => console.log('login with google..')}
+            onPress={() => console.log('SignUp with google..')}
             wrapperStyle={{width: '30%'}}
             icon={
               <Image
@@ -188,12 +190,12 @@ const Login = () => {
             propStyle={{
               fontSize: appFontSize.bodyMain,
             }}>
-            Don’t have an Account?{' '}
+            Have an account?{' '}
           </BodyLabel>
 
           <TextButton
-            onPress={() => navigation.navigate('signup')}
-            buttonText="Sign up here"
+            onPress={() => navigation.navigate('login')}
+            buttonText="Sign in here"
             wrapperStyle={{
               alignItems: 'flex-end',
             }}
@@ -204,14 +206,14 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: appPadding['3xl'],
   },
-  altLogin: {
+  altSignUp: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: appMargin.xxl,

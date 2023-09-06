@@ -41,7 +41,7 @@ const FormInput = ({
   return (
     <View style={[styles.container, containerStyle]}>
       <BodyLabel
-        propsStyle={{color: appColors.black, marginBottom: appMargin.xsm}}>
+        propStyle={{color: appColors.black, marginBottom: appMargin.xsm}}>
         {label}
       </BodyLabel>
 
@@ -51,6 +51,7 @@ const FormInput = ({
           rightIcon={elementStore?.rightIcon}
           leftIcon={elementStore?.leftIcon}
           text={text}
+          keyboardType={keyboardType}
           setText={setText}
           placeholder={placeholder}
           isPassword={isPassword}

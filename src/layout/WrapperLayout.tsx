@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     paddingVertical: appPadding.sm,
     paddingHorizontal: appPadding.md,
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
 });
