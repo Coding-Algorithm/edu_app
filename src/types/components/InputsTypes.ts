@@ -16,3 +16,15 @@ export type InputPropsTypes = {
 };
 
 export type TextBoxPropsTypes = InputPropsTypes & {lineHeight: number};
+
+/*
+
+- passing type input
+- 
+
+
+
+*/ 
+
+
+
